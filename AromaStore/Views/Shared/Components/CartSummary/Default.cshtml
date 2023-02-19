@@ -1,0 +1,11 @@
+﻿@model Cart
+<div class="">
+    @if (Model.Lines.Count() > 0)
+    {
+        <small class="navbar-text" style="color: white">
+            @Model.Lines.Sum(x => x.Quantity)
+        </small>
+    }
+
+</div>
+

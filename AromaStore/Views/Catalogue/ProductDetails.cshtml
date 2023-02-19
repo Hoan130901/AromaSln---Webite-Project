@@ -1,0 +1,59 @@
+﻿
+@model Product
+    <!-- ================ start banner area ================= -->
+    <section class="blog-banner-area" id="category">
+        <div class="container">
+            <div class="blog-banner">
+                <div class="text-center">
+                    <h1>Product Details</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ================ end banner area ================= -->
+    <!--================Single Product Area =================-->
+    <div class="product_image_area">
+        <div class="container">
+            <div class="row s_product_inner">
+                <div class="col-lg-4">                    
+                        <img class="card-img" src="/img/product/@Model.Image" alt="">
+                </div>
+                    <div class=" col-lg-4"></div>
+                <div class="col-lg-4">
+                    <div class="s_product_text">
+                        <h3>@Model.Name</h3>
+                        <h2>@Model.Price.ToString("c")</h2>
+                        <ul class="list">
+                            <li><a class="active" href="#"><span>Category</span>@Model.Category</a></li>
+                        </ul>
+                        <p>
+                            @Model.Description
+                        </p>
+                        <form asp-page="/Cart" method="post">
+                            <input type="hidden" name="productId" value="@Model.ProductID"/>
+                            <div class="product_count">
+                                <label for="quantity">Quantity:</label>
+
+                                <input type="text" name="quantity" id="sst" size="2" maxlength="12" value="1" title="Quantity:" class="input-text qty">
+
+                                <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
+                                        class="increase items-count" type="button">
+                                    <i class="fa fa-angle-up"></i>
+                                </button>
+
+                                <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
+                                        class="reduced items-count" type="button">
+                                    <i class="fa fa-angle-down"></i>
+                                </button>
+                            </div>
+                            <button type="submit" class="btn btn-primary"> Add To Cart </button>
+                            <input type="hidden" name="returnUrl" value="/Catalogue" />
+                        </form>
+                    </div>
+                </div>
+            
+                </div>
+        </div>
+    </div>
+    <!--================End Single Product Area =================-->
+    <script src="vendors/bootstrap/bootstrap.bundle.min.js"></script>
